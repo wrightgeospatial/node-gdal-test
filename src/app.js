@@ -32,6 +32,8 @@ console.log(obj.ReferenceSys)
 // // console.log(__filename)
 
 const app = express()
+//Heroku Modification
+const port = process.env.PORT || 3000
 
 //Use Handle Bars
 app.set('view engine', 'hbs')
@@ -59,13 +61,16 @@ app.use(express.static(web))
 // Serve up data folder
 app.use(express.static(database))
 
-
+//start Server Heroku
+app.listen(port, () =>{
+    console.log('Server started on port' + port + '...')
+})
 
  
-//start Server
-app.listen(3000, () =>{
-    console.log('Server started on port 3000...')
-})
+// //start Server Locally
+// app.listen(3000, () =>{
+//     console.log('Server started on port 3000...')
+// })
 
 // app.get('/help', (req, res)=> {
 //     res.send('Help page')
